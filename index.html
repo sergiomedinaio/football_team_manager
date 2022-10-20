@@ -11,8 +11,9 @@
 <body>
     <div id="app">
         <ul class="peopleList">
+            <h1>Seleccionados</h1>
             <li 
-                v-for="person in peopleList" 
+                v-for="person in peopleSelected" 
                 class="peopleList__item"
                 :class="{
                     'peopleList__item--male': person.gender == 'male',
@@ -24,6 +25,24 @@
                 {{person.name.last}}
             </li>
         </ul>
+        <div class="modal" v-show="showModal">
+            <h1>Lista de candidatos</h1>
+            <ul class="peopleList">
+                <li 
+                    v-for="(person, index) in peopleList" 
+                    class="peopleList__item"
+                    :class="{
+                        'peopleList__item--male': person.gender == 'male',
+                        'peopleList__item--female': person.gender == 'female',
+                    }"
+                    @click="() => selectPerson(person, index)"
+                >
+                    {{person.gender}}
+                    {{person.name.title}}
+                    {{person.name.last}}
+                </li>
+            </ul>
+        </div>
         <button @click="getFromRemote">Buscar informacion</button>
     </div>      
     <script src="./index.js"></script>
