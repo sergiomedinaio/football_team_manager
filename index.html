@@ -9,7 +9,14 @@
 </head>
 <body>
     <div id="app">
-        {{ message }}
+        <ul>
+            <li v-for="person in peopleList">
+                {{person.gender}}
+                {{person.name.title}}
+                {{person.name.last}}
+            </li>
+        </ul>
+        <button @click="getFromRemote">Buscar informacion</button>
     </div>      
     <script src="./index.js"></script>
 </body>
