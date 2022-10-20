@@ -6,12 +6,16 @@ var app = new Vue({
       peopleSelected: [],
       message: 'Hello Vue!'
     },
+    created: function () {
+      const prevList = JSON.parse(localStorage.getItem("peopleSelected"))
+      this.peopleSelected = prevList ? prevList : [];
+    },  
     methods: {
       selectPerson (person, index) {
-        //person.gender = "male";
         this.peopleSelected.push(person);
         this.peopleList.splice(index,1);
         this.showModal = false;
+        localStorage.setItem("peopleSelected", JSON.stringify(this.peopleSelected))
       },
       async getFromRemote(){
         let response = await fetch("https://randomuser.me/api/?results=50")
@@ -23,4 +27,4 @@ var app = new Vue({
       }
     }
   })
-  
+
