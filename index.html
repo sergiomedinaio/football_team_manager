@@ -5,12 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Cotizaciones dolar</title>
 </head>
 <body>
     <div id="app">
-        <ul>
-            <li v-for="person in peopleList">
+        <ul class="peopleList">
+            <li 
+                v-for="person in peopleList" 
+                class="peopleList__item"
+                :class="{
+                    'peopleList__item--male': person.gender == 'male',
+                    'peopleList__item--female': person.gender == 'female',
+                }"
+            >
                 {{person.gender}}
                 {{person.name.title}}
                 {{person.name.last}}

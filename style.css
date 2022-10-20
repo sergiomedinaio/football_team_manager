@@ -1,0 +1,15 @@
+.peopleList {}
+
+.peopleList__item {
+    padding: 0.5rem 1rem;
+}
+
+.peopleList__item--male {
+    background-color: blue;
+    color: #fff;
+}
+
+.peopleList__item--female {
+    background-color: crimson;
+    color: #fff;
+}
